@@ -6,8 +6,7 @@
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "resolveJsonModule": true,
-    "outDir": "dist"
+    "resolveJsonModule": true
   },
   "include": ["src/**/*", "eval/**/*"],
   "exclude": ["node_modules", "dist"]
