@@ -8,7 +8,7 @@ export function chunkChapters(
   overlapParagraphs: number = 1
 ): Document[] {
   if (chunkSize <= 0) throw new Error('ChunkSize must be > 0');
-  if (overlapParagraphs <= 0) throw new Error('Overlap must be > 0');
+  if (overlapParagraphs < 0) throw new Error('Overlap must be >= 0');
 
   const docs: Document[] = [];
 
@@ -95,14 +95,5 @@ export function chunkChapters(
       emit(paragraphs.length);
     }
   }
-
-  console.log('total documents:', docs.length);
-  if (docs.length > 0) {
-    console.log('document[0].metadata:', docs[0].metadata);
-    console.log('document[0].pageContent length:', docs[0].pageContent.length);
-  }
-
   return docs;
 }
-
-chunkChapters(parseGutenbergHtml('data/raw/crime-and-punishment.html'), 800);
