@@ -9,7 +9,11 @@ export async function indexToChroma() {
   const docs = chunkChapters(chapters, config.ingest.chunkSize, 1);
 
   const embeddings = createEmbeddings();
-  const client = new ChromaClient({ path: config.chroma.url });
+  const client = new ChromaClient({
+    host: config.chroma.host,
+    port: config.chroma.port,
+    ssl: config.chroma.ssl
+  });
   const collection = await client.getOrCreateCollection({
     name: config.chroma.collection
   });

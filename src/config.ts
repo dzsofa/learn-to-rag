@@ -2,7 +2,7 @@
 //
 // `import "dotenv/config"` reads the .env file and merges it into
 // process.env before we call getStr/getInt below.
-import "dotenv/config";
+import 'dotenv/config';
 
 function getStr(key: string, fallback: string): string {
   return process.env[key] ?? fallback;
@@ -23,7 +23,9 @@ export const config = {
     embeddingModel: getStr('OLLAMA_EMBEDDING_MODEL', 'nomic-embed-text')
   },
   chroma: {
-    url: getStr('CHROMA_URL', 'http://localhost:8000'),
+    host: getStr('CHROMA_HOST', 'localhost'),
+    port: getInt('CHROMA_PORT', 8000),
+    ssl: getStr('CHROMA_SSL', 'false') === 'true',
     collection: getStr('CHROMA_COLLECTION', 'crime-and-punishment')
   },
   ingest: {
