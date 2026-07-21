@@ -9,7 +9,9 @@
 import { ChatOllama } from '@langchain/ollama';
 import { config } from '../config';
 
-export function createChatModel(opts: { temperature?: number } = {}) {
+export function createChatModel(
+  opts: { temperature?: number } = {}
+): ChatOllama {
   return new ChatOllama({
     baseUrl: config.ollama.baseUrl,
     model: config.ollama.chatModel,

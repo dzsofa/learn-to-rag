@@ -10,7 +10,7 @@
 import { OllamaEmbeddings } from '@langchain/ollama';
 import { config } from '../config';
 
-export function createEmbeddings() {
+export function createEmbeddings(): OllamaEmbeddings {
   return new OllamaEmbeddings({
     baseUrl: config.ollama.baseUrl,
     model: config.ollama.embeddingModel
