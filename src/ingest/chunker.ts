@@ -1,6 +1,5 @@
 import { Document } from '@langchain/core/documents';
 import { Chapter } from '../interfaces/chapter';
-import { parseGutenbergHtml } from './parseGutenbergHtml';
 
 export function chunkChapters(
   chapters: Chapter[],
