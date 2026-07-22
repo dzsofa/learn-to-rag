@@ -4,7 +4,7 @@ import { verifyCitations } from './verifyCitations';
 import { intentRouter } from './intentRouter';
 import { retrieveNode } from './retrieveNode';
 import { generateAnswer } from './generateAnswer';
-import { config } from "../config";
+import { config } from '../config';
 
 export const bookGraph = new StateGraph(GraphState)
   .addNode('intentRouter', intentRouter)
@@ -23,7 +23,6 @@ export const bookGraph = new StateGraph(GraphState)
 
 export const runQuery = async (query: string) => {
   const result = await bookGraph.invoke({ query });
-  console.log(result)
   return result;
 };
 
@@ -35,11 +34,10 @@ function routeByCitations(state: typeof GraphState.State): 'end' | 'retry' {
   }
 }
 
-
 const isMain = process.argv[1]?.endsWith('bookGraph.ts');
 if (isMain) {
   runQuery('Who is Raskolnikov?')
-    .then(result => {
+    .then((result) => {
       console.log('Answer:', result.answer);
       console.log('Citations:', result.citations);
     })

@@ -18,7 +18,9 @@ export async function generateAnswer(
     new HumanMessage(`${state.query}\n\n${retrievedDocs.join('\n\n')}`)
   ]);
   const answer = String(result.content);
-  const citations = answer.match(/\(Ch\. \d+, para \d+[-–]\d+\)/g) ?? [];
+  const citations = [
+    ...(new Set(answer.match(/\(Ch\. \d+, para \d+[-–]\d+\)/g)) ?? [])
+  ];
 
   return { answer, citations };
 }
