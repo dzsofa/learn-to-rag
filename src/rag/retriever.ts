@@ -3,6 +3,7 @@ import { config } from '../config';
 import { createEmbeddings } from '../llm/ollamaEmbeddings';
 import { getCollection } from './chromaClient';
 import { Document } from '@langchain/core/documents';
+import { RetrievedDoc } from '../interfaces/retrievedDoc';
 
 export async function retrieve(
   query: string,
@@ -20,7 +21,7 @@ export async function retrieve(
     where: filter
   });
 
-  let retrieved: { document: Document; distance: number }[] = [];
+  let retrieved: RetrievedDoc[] = [];
   results.documents[0].forEach((text, index) => {
     retrieved.push({
       document: new Document({
