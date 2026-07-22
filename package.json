@@ -6,6 +6,7 @@
   "scripts": {
     "smoke": "tsx src/llm/smokeTest.ts",
     "retrieve": "tsx src/rag/retriever.ts",
+    "graph": "tsx src/graph/bookGraph.ts",
     "ingest": "tsx src/ingest/indexToChroma.ts",
     "chat": "tsx src/cli/chat.ts",
     "eval": "tsx eval/runEval.ts",
