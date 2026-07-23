@@ -25,9 +25,9 @@ export async function generateAnswer(
     new HumanMessage(`${state.query}\n\n${retrievedDocs.join('\n\n')}`)
   ]);
   const answer = String(result.content);
-  const citations = [
-    ...(new Set(answer.match(/\(Ch\. \d+, para \d+[-–]\d+\)/g)) ?? [])
-  ];
+  const CITATION_RE = /\(Ch\.\s*\d+,\s*para\s*\d+\s*[-–—]\s*\d+\)/g;
+
+  const citations = Array.from(new Set(answer.match(CITATION_RE) ?? []));
 
   return { answer, citations };
 }

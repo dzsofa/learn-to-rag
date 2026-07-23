@@ -9,6 +9,6 @@
     "skipLibCheck": true,
     "resolveJsonModule": true
   },
-  "include": ["src/**/*", "eval/**/*"],
+  "include": ["src/**/*", "eval/**/*", "eval"],
   "exclude": ["node_modules", "dist"]
 }

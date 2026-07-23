@@ -1,0 +1,35 @@
+// character knowledge, plot points
+{"id":"fact-01","query":"Who is Raskolnikov?","type":"fact","expectedKeywords":["Raskolnikov","character"]}
+{"id":"fact-02","query":"Who is Porfiry Petrovitch?","type":"fact","expectedKeywords":["Porfiry","detective"]}
+{"id":"fact-03","query":"What is Sonya's profession?","type":"fact","expectedKeywords":["Sonya"]}
+{"id":"fact-04","query":"Who is Dunya?","type":"fact","expectedKeywords":["Dunya","sister"]}
+{"id":"fact-05","query":"What does Raskolnikov do at the start of the novel?","type":"fact","expectedKeywords":["Raskolnikov"]}
+{"id":"fact-06","query":"Who is Marmeladov?","type":"fact","expectedKeywords":["Marmeladov"]}
+{"id":"fact-07","query":"What is Razumikhin's relationship to Raskolnikov?","type":"fact","expectedKeywords":["Razumikhin"]}
+{"id":"fact-08","query":"Where does the murder take place?","type":"fact","expectedKeywords":["pawnbroker"]}
+{"id":"fact-09","query":"Who are the victims of the murder?","type":"fact","expectedKeywords":["pawnbroker","Lizaveta"]}
+{"id":"fact-10","query":"Where is Raskolnikov imprisoned at the end?","type":"fact","expectedKeywords":["prison","Siberia"]}
+
+// specific passages
+{"id":"quote-01","query":"Find a passage where Raskolnikov confesses to the crime.","type":"quote","expectedKeywords":["killed","axe"]}
+{"id":"quote-02","query":"Cite a passage about Raskolnikov's theory or philosophy.","type":"quote","expectedKeywords":["theory","extraordinary"]}
+{"id":"quote-03","query":"Find where Sonya urges Raskolnikov to confess.","type":"quote","expectedKeywords":["confess","Sonya"]}
+{"id":"quote-04","query":"What does Porfiry say about guilt?","type":"quote","expectedKeywords":["Porfiry","guilt"]}
+{"id":"quote-05","query":"Find a passage describing Raskolnikov's fever or illness.","type":"quote","expectedKeywords":["fever","ill"]}
+{"id":"quote-06","query":"Cite a passage about poverty in the novel.","type":"quote","expectedKeywords":["poverty","poor"]}
+{"id":"quote-07","query":"Find where the pawnbroker is described.","type":"quote","expectedKeywords":["pawnbroker"]}
+{"id":"quote-08","query":"What does Raskolnikov say about morality?","type":"quote","expectedKeywords":["morality","moral"]}
+{"id":"quote-09","query":"Cite a passage about redemption or salvation.","type":"quote","expectedKeywords":["redemption","salvation"]}
+{"id":"quote-10","query":"Find a passage where Raskolnikov feels remorse.","type":"quote","expectedKeywords":["remorse","guilt","regret"]}
+
+// reasoning across passages
+{"id":"analysis-01","query":"What role does guilt play in Raskolnikov's story?","type":"analysis","expectedKeywords":["guilt"]}
+{"id":"analysis-02","query":"How does Raskolnikov's relationship with Sonya change throughout the novel?","type":"analysis","expectedKeywords":["Sonya","Raskolnikov"]}
+{"id":"analysis-03","query":"What is Raskolnikov's theory and why does he commit the murder?","type":"analysis","expectedKeywords":["theory","extraordinary"]}
+{"id":"analysis-04","query":"How does poverty influence the events of the novel?","type":"analysis","expectedKeywords":["poverty"]}
+{"id":"analysis-05","query":"What is the significance of Porfiry in Raskolnikov's downfall?","type":"analysis","expectedKeywords":["Porfiry"]}
+{"id":"analysis-06","query":"How does Raskolnikov achieve redemption?","type":"analysis","expectedKeywords":["redemption","Sonya","faith"]}
+{"id":"analysis-07","query":"What is the moral message of Crime and Punishment?","type":"analysis","expectedKeywords":["morality","conscience"]}
+{"id":"analysis-08","query":"How does the Epilogue resolve Raskolnikov's internal conflict?","type":"analysis","expectedKeywords":["Epilogue","redemption"]}
+{"id":"analysis-09","query":"What themes connect the characters Raskolnikov, Sonya, and Marmeladov?","type":"analysis","expectedKeywords":["suffering","poverty"]}
+{"id":"analysis-10","query":"Why does Raskolnikov confess despite Porfiry's investigation?","type":"analysis","expectedKeywords":["confess","guilt","conscience"]}
