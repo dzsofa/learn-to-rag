@@ -10,6 +10,7 @@
     "ingest": "tsx src/ingest/indexToChroma.ts",
     "chat": "tsx src/cli/chat.ts",
     "eval": "tsx eval/runEval.ts",
+    "score": "tsx eval/scoreEval.ts",
     "build": "tsc --noEmit"
   },
   "dependencies": {
