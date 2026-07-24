@@ -21,31 +21,18 @@ export async function indexToChroma() {
   const BATCH = 50;
   for (let i = 0; i < docs.length; i += BATCH) {
     const batch = docs.slice(i, i + BATCH);
-    const texts = batch.map((data) => data.pageContent);
+    const texts = batch.map((doc) => doc.pageContent);
 
-    // Truncate oversized chunks before embedding
-    const truncatedTexts = texts.map((t) =>
-      t.length > 2000 ? t.slice(0, 2000) + '…' : t
-    );
-
-    // embed
-    const vectors = await embeddings.embedDocuments(truncatedTexts);
-
-    // build ids
+    const vectors = await embeddings.embedDocuments(texts);
     const ids = batch.map((_, j) => `doc-${i + j}`);
-
-    console.log(`indexed ${Math.min(i + BATCH, docs.length)} / ${docs.length}`);
-    // upsert
     const metadatas = batch.map(
       (d) => d.metadata as Record<string, string | number | boolean>
     );
-    await collection.upsert({
-      ids,
-      embeddings: vectors,
-      documents: truncatedTexts,
-      metadatas
-    });
+
+    await collection.upsert({ ids, embeddings: vectors, documents: texts, metadatas });
+    console.log(`indexed ${Math.min(i + BATCH, docs.length)} / ${docs.length}`);
   }
 }
 
-indexToChroma();
+const isMain = process.argv[1]?.endsWith('indexToChroma.ts');
+if (isMain) indexToChroma();
