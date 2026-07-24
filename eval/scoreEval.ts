@@ -1,6 +1,7 @@
 import * as readline from 'node:readline';
 import * as fs from 'fs';
 import * as path from 'path';
+import { allKeywordsHit } from './scoringUtils';
 
 export async function scoreEval(runId: string) {
   const readPath = path.resolve('./eval/runs/', `${runId}.jsonl`);
@@ -14,9 +15,7 @@ export async function scoreEval(runId: string) {
     if (!line.trim() || line.startsWith('//')) continue;
     try {
       const parsedEval = JSON.parse(line);
-      const keywordPass = parsedEval.expectedKeywords.every((kw: string) =>
-        parsedEval.answer.includes(kw)
-      );
+      const keywordPass = allKeywordsHit(parsedEval.answer, parsedEval.expectedKeywords);
       const citationPass = parsedEval.citations.length > 0;
       const retryCount = parsedEval.retryCount;
 
