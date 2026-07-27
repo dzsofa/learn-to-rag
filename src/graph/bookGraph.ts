@@ -5,15 +5,18 @@ import { intentRouter } from './intentRouter';
 import { retrieveNode } from './retrieveNode';
 import { generateAnswer } from './generateAnswer';
 import { config } from '../config';
+import { gradeDocsNode } from './gradeDocs';
 
 export const bookGraph = new StateGraph(GraphState)
   .addNode('intentRouter', intentRouter)
   .addNode('retrieveNode', retrieveNode)
+  .addNode('gradeDocsNode', gradeDocsNode)
   .addNode('generateAnswer', generateAnswer)
   .addNode('verifyCitations', verifyCitations)
   .addEdge(START, 'intentRouter')
   .addEdge('intentRouter', 'retrieveNode')
-  .addEdge('retrieveNode', 'generateAnswer')
+  .addEdge('retrieveNode', 'gradeDocsNode')
+  .addEdge('gradeDocsNode', 'generateAnswer')
   .addEdge('generateAnswer', 'verifyCitations')
   .addConditionalEdges('verifyCitations', routeByCitations, {
     end: END,

@@ -11,6 +11,7 @@
     "chat": "tsx src/cli/chat.ts",
     "eval": "tsx eval/runEval.ts",
     "score": "tsx eval/scoreEval.ts",
+    "diff": "tsx eval/diffEvals.ts",
     "build": "tsc --noEmit"
   },
   "dependencies": {

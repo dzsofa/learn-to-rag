@@ -16,11 +16,14 @@ export async function generateAnswer(
   const result = await chat.invoke([
     new SystemMessage(`You are a literary assistant answering questions about Crime and Punishment.
         Use ONLY the provided passages to answer. 
-        Cite each passage you use as (Ch. X, para Y–Z).
+        Cite each passage you use as (Ch. X, para Y–Z) or Ch. X, para Y–Z.
         Always use exactly this format. No other formats.
         Example:
         Question: Who is Sonia?
         Answer: Sonia is a kind woman who helps others (Ch. 3, para 40-42) and is deeply compassionate (Ch. 5, para 100-105).
+        Negative (WRONG) example:
+        Question: Who is Sonia?
+        Answer: Sonia is a Ch. 3, para 40-42 kind woman.
         If the passages don't contain enough information, say so.`),
     new HumanMessage(`${state.query}\n\n${retrievedDocs.join('\n\n')}`)
   ]);
