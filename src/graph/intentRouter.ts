@@ -1,39 +1,26 @@
+import { analysis, analysisPatterns } from '../constants/analysis';
+import { quote, quotePatterns } from '../constants/quote';
 import { Intent } from '../interfaces/intent';
 import { GraphState } from './state';
 
 export function intentRouter(
   state: typeof GraphState.State
 ): Partial<typeof GraphState.State> {
-  let detectedIntent = '';
-  const quote = [
-    'passage',
-    'quote',
-    'said',
-    'wrote',
-    'scene where',
-    'find where',
-    'cite',
-    ' say ',
-    ' says '
-  ];
-  const analysis = [
-    'theme',
-    'symbol',
-    'why does',
-    'what does',
-    'represent',
-    'significance',
-    'analyze',
-    'compare'
-  ];
+  const q = state.query.toLowerCase().replace(/\s+/g, ' ').trim();
 
-  if (quote.some((kw) => state.query.includes(kw))) {
-    detectedIntent = 'quote';
-  } else if (analysis.some((kw) => state.query.includes(kw))) {
-    detectedIntent = 'analysis';
-  } else {
-    detectedIntent = 'fact';
-  }
+  const isQuote =
+    quote.some((kw) => q.includes(kw)) ||
+    quotePatterns.some((rx) => rx.test(q));
+
+  const isAnalysis =
+    analysis.some((kw) => q.includes(kw)) ||
+    analysisPatterns.some((rx) => rx.test(q));
+
+  let detectedIntent: 'quote' | 'analysis' | 'fact' = 'fact';
+
+  // precedence: quote usually should beat analysis if both match
+  if (isQuote) detectedIntent = 'quote';
+  else if (isAnalysis) detectedIntent = 'analysis';
 
   return { intent: detectedIntent as Intent };
 }

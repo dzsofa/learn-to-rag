@@ -1,0 +1,88 @@
+export const analysis = [
+  // themes & messages
+  'theme',
+  'themes',
+  'message',
+  'main idea',
+  'central idea',
+  'moral',
+  'lesson',
+  'big idea',
+  'commentary',
+
+  // symbolism & meaning
+  'symbol',
+  'symbolism',
+  'metaphor',
+  'motif',
+  'imagery',
+  'foreshadowing',
+  'irony',
+  'allegory',
+  'represents',
+  'represent',
+  'stands for',
+  'meaning of',
+  'what does it mean',
+  'what does this mean',
+
+  // character analysis
+  'character development',
+  'character arc',
+  'motivation',
+  'why does (character)',
+  'why did (character)',
+  'what drives',
+  'conflict',
+  'internal conflict',
+  'external conflict',
+  'flaw',
+  'strength',
+  'growth',
+
+  // interpretation prompts
+  'analyze',
+  'analysis',
+  'interpret',
+  'interpretation',
+  'significance',
+  'importance',
+  'impact',
+  'implication',
+  'what is the author trying to say',
+  'author\'s purpose',
+  'author\'s intent',
+
+  // compare/contrast & structure
+  'compare',
+  'contrast',
+  'difference between',
+  'similarities',
+  'parallel',
+  'juxtaposition',
+  'how does this relate',
+  'connection between',
+  'relationship between',
+
+  // writing technique / craft
+  'tone',
+  'mood',
+  'style',
+  'point of view',
+  'narrator',
+  'unreliable narrator',
+  'setting',
+  'context',
+  'structure',
+  'pacing',
+];
+
+export const analysisPatterns: RegExp[] = [
+  /\bwhat does\b.*\b(mean|represent|symbolize)\b/,
+  /\bwhy does\b/,
+  /\bhow does\b.*\bshow\b/,
+  /\bwhat is the (theme|message|significance)\b/,
+  /\banaly(s|z)e\b|\binterpret\b|\binterpretation\b/,
+  /\bcompare\b|\bcontrast\b|\bparallel\b|\bjuxtaposition\b/,
+  /\b(tone|mood|motif|symbolism|foreshadowing|irony|metaphor)\b/,
+];

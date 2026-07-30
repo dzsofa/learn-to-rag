@@ -17,7 +17,10 @@ async function main() {
     const result = await runQuery(line);
     console.log('\n\n');
     console.log(result.answer);
-    console.log(result.citations.join(', '));
+    if (result.citations.length > 0) {
+      console.log('\nSources:');
+      result.citations.forEach((c) => console.log(`  ${c}`));
+    }
   }
 
   rl.close();
