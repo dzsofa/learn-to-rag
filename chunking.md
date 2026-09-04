@@ -1,3 +1,5 @@
+### Based on https://www.trychroma.com/research/evaluating-chunking ###
+
 | Strategy (as in report) | Core idea | How boundaries are chosen | Chunk size behavior | Overlap | Main strengths | Main weaknesses / risks | Best when | **Observed tendency in the report** |
 |---|---|---|---|---|---|---|---|---|
 | **TokenTextSplitter** (fixed-size) | Split by token count | Every `chunk_size` tokens (optionally sliding by overlap) | Very consistent | Optional (common) | Fast, simple, predictable | Cuts mid-sentence/section; overlap adds redundancy | Simple baseline | With **large overlap (e.g., 800/400)**: *poor efficiency* (low precision/IoU). With **weaker embedder (MiniLM)**: overlap can **help recall** (reduces boundary loss). |
