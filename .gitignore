@@ -5,3 +5,4 @@ data/raw/
 data/processed/
 chroma-db/
 *.log
+eval/runs
