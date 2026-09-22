@@ -33,10 +33,11 @@ if (state.intent === 'quote' || state.intent === 'fact') {
     scored.push({ doc, score: isNaN(score) ? 0 : score });
   }
 
-  // Sort best-first, keep top 5. Never drop everything.
+  // Sort best-first, keep top 8 for analysis (breadth matters for synthesis).
+  // Never drop everything.
   const reranked = scored
     .sort((a, b) => b.score - a.score)
-    .slice(0, 5)
+    .slice(0, 8)
     .map((s) => s.doc);
 
   return { docs: reranked };

@@ -80,7 +80,7 @@ export const analysis = [
 export const analysisPatterns: RegExp[] = [
   /\bwhat does\b.*\b(mean|represent|symbolize)\b/,
   /\bwhy does\b/,
-  /\bhow does\b.*\bshow\b/,
+  /\bhow does\b/,
   /\bwhat is the (theme|message|significance)\b/,
   /\banaly(s|z)e\b|\binterpret\b|\binterpretation\b/,
   /\bcompare\b|\bcontrast\b|\bparallel\b|\bjuxtaposition\b/,
