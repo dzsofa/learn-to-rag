@@ -4,6 +4,10 @@ import { Intent } from "../interfaces/intent";
 
 export const GraphState = Annotation.Root({
   query: Annotation<string>(),
+  rewrittenQueries: Annotation<string[]>({
+    reducer: (_, next) => next,
+    default: () => []
+  }),
   intent: Annotation<Intent>(),
   docs: Annotation<RetrievedDoc[]>({
     reducer: (_, next) => next,

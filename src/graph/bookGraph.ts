@@ -6,15 +6,18 @@ import { retrieveNode } from './retrieveNode';
 import { generateAnswer } from './generateAnswer';
 import { config } from '../config';
 import { gradeDocsNode } from './gradeDocs';
+import { queryRewriteNode } from './queryRewriteNode';
 
 export const bookGraph = new StateGraph(GraphState)
   .addNode('intentRouter', intentRouter)
+  .addNode('queryRewriteNode', queryRewriteNode)
   .addNode('retrieveNode', retrieveNode)
   .addNode('gradeDocsNode', gradeDocsNode)
   .addNode('generateAnswer', generateAnswer)
   .addNode('verifyCitations', verifyCitations)
   .addEdge(START, 'intentRouter')
-  .addEdge('intentRouter', 'retrieveNode')
+  .addEdge('intentRouter', 'queryRewriteNode')
+  .addEdge('queryRewriteNode', 'retrieveNode')
   .addEdge('retrieveNode', 'gradeDocsNode')
   .addEdge('gradeDocsNode', 'generateAnswer')
   .addEdge('generateAnswer', 'verifyCitations')
