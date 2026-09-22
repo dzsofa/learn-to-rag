@@ -37,4 +37,6 @@ export async function retrieve(
 
 const isMain = process.argv[1]?.endsWith('retriever.ts');
 if (isMain)
-  retrieve('Why does Raskolnikov confess to the murder?').then(console.log);
+  retrieve(
+    "Why does Raskolnikov confess despite Porfiry's investigation?"
+  ).then(console.log);

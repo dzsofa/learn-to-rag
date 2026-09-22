@@ -1,3 +1,6 @@
 allowBuilds:
   esbuild: true
   inotify: false
+  onnxruntime-node: true
+  protobufjs: true
+  sharp: true
