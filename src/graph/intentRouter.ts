@@ -35,12 +35,14 @@ if (isMain) {
     'Find where the pawnbroker is described',
     'What does Raskolnikov say about morality?',
     "Cite a passage about Raskolnikov's theory",
-    'Find a passage where Raskolnikov feels remorse'
+    'Find a passage where Raskolnikov feels remorse',
+    'How does Raskolnikov achieve redemption?'
   ];
 
   tests.forEach((test) => {
     const result = intentRouter({
       query: test,
+      rewrittenQueries: [],
       intent: 'fact',
       docs: [],
       answer: '',

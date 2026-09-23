@@ -3,9 +3,12 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { runQuery } from '../src/graph/bookGraph';
 
-export async function runEval() {
-  const readPath = path.resolve('./eval/', 'questions.jsonl');
-  const writePath = path.resolve('./eval/runs/', `${Date.now()}.jsonl`);
+export async function runEval(questionsFile = 'questions.dev.jsonl') {
+  const readPath = path.resolve('./eval/', questionsFile);
+  // Tag the run filename with the set (dev/test) so runs can't be confused.
+  // "questions.dev.jsonl" -> "dev", "questions.test.jsonl" -> "test".
+  const setTag = questionsFile.replace(/^questions\.?/, '').replace(/\.jsonl$/, '') || 'dev';
+  const writePath = path.resolve('./eval/runs/', `${setTag}-${Date.now()}.jsonl`);
   const rl = readline.createInterface({
     input: fs.createReadStream(readPath, { encoding: 'utf-8' }),
     crlfDelay: Infinity
@@ -40,4 +43,4 @@ export async function runEval() {
 }
 
 const isMain = process.argv[1]?.endsWith('runEval.ts');
-if (isMain) runEval();
+if (isMain) runEval(process.argv[2]);

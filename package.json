@@ -9,7 +9,8 @@
     "graph": "tsx src/graph/bookGraph.ts",
     "ingest": "tsx src/ingest/indexToChroma.ts",
     "chat": "tsx src/cli/chat.ts",
-    "eval": "tsx eval/runEval.ts",
+    "eval": "tsx eval/runEval.ts questions.dev.jsonl",
+    "eval:test": "tsx eval/runEval.ts questions.test.jsonl",
     "score": "tsx eval/scoreEval.ts",
     "diff": "tsx eval/diffEvals.ts",
     "build": "tsc --noEmit"

@@ -1,0 +1,13 @@
+// HELD-OUT TEST SET — do not inspect individual failures or tune against these.
+// Run only at milestones via `pnpm eval:test`. If you ever need to diagnose a
+// question here, move it into questions.dev.jsonl first — it is burned once seen.
+{"id":"fact-02","query":"Who is Porfiry Petrovitch?","type":"fact","expectedKeywords":["Porfiry","detective"]}
+{"id":"fact-06","query":"Who is Marmeladov?","type":"fact","expectedKeywords":["Marmeladov"]}
+{"id":"fact-09","query":"Who are the victims of the murder?","type":"fact","expectedKeywords":["pawnbroker","Lizaveta"]}
+{"id":"quote-04","query":"What does Porfiry say about guilt?","type":"quote","expectedKeywords":["Porfiry","guilt"]}
+{"id":"quote-05","query":"Find a passage describing Raskolnikov's fever or illness.","type":"quote","expectedKeywords":["fever","ill"]}
+{"id":"quote-07","query":"Find where the pawnbroker is described.","type":"quote","expectedKeywords":["pawnbroker"]}
+{"id":"analysis-01","query":"What role does guilt play in Raskolnikov's story?","type":"analysis","expectedKeywords":["guilt"]}
+{"id":"analysis-02","query":"How does Raskolnikov's relationship with Sonya change throughout the novel?","type":"analysis","expectedKeywords":["Sonya","Raskolnikov"]}
+{"id":"analysis-04","query":"How does poverty influence the events of the novel?","type":"analysis","expectedKeywords":["poverty"]}
+{"id":"analysis-05","query":"What is the significance of Porfiry in Raskolnikov's downfall?","type":"analysis","expectedKeywords":["Porfiry"]}

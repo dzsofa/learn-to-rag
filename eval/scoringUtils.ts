@@ -40,6 +40,12 @@ const KEYWORD_ALIASES: Record<string, string[]> = {
   // "moral" is a substring of "morality" so this only fires when the answer
   // contains "moral" but not "morality".
   morality: ['moral'],
+
+  // When asked how the Epilogue "resolves" Raskolnikov's arc, the model consistently
+  // uses "resolution", "resolved", or "reconciled" rather than "redemption". In the
+  // context of a character's narrative arc these are direct synonyms — the Epilogue's
+  // resolution IS the redemptive arc. This is not loose overlap (cf. conscience/guilt).
+  redemption: ['resolution', 'resolved', 'reconciled'],
 };
 
 /**
