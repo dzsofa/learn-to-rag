@@ -34,7 +34,7 @@ export const config = {
       'data/raw/crime-and-punishment.html'
     ),
     chunkSize: getInt('CHUNK_SIZE', 800),
-    chunkOverlap: getInt('CHUNK_OVERLAP', 100)
+    chunkOverlap: getInt('CHUNK_OVERLAP', 1)
   },
   retrieval: {
     k: getInt('RETRIEVAL_K', 5)

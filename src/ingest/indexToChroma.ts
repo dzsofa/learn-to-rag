@@ -6,7 +6,11 @@ import { createEmbeddings } from '../llm/ollamaEmbeddings';
 
 export async function indexToChroma() {
   const chapters = parseGutenbergHtml('data/raw/crime-and-punishment.html');
-  const docs = chunkChapters(chapters, config.ingest.chunkSize, 1);
+  const docs = chunkChapters(
+    chapters,
+    config.ingest.chunkSize,
+    config.ingest.chunkOverlap
+  );
 
   const embeddings = createEmbeddings();
   const client = new ChromaClient({
