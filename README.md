@@ -72,7 +72,8 @@ pnpm chat                     # interactive CLI
 | `pnpm smoke` | Verifies Ollama chat + embeddings are reachable |
 | `pnpm ingest` | Parses the Gutenberg HTML, chunks it, and indexes into Chroma |
 | `pnpm chat` | Interactive CLI — type a question, get an answer with citations |
-| `pnpm eval` | Runs the 30-question test set and writes a timestamped result file |
+| `pnpm eval` | Runs the **development** question set (20 questions) and writes a timestamped `dev-*` result file |
+| `pnpm eval:test` | Runs the **held-out test** set (10 questions) and writes a `test-*` result file — use sparingly (see Evaluation methodology) |
 | `pnpm score <id>` | Scores a result file by keyword-pass and citation-pass |
 | `pnpm diff <id1> <id2>` | Compares two eval runs question-by-question |
 
@@ -166,6 +167,19 @@ Separating the two tasks consistently improves both prose quality (the generatio
 | Citation hallucination | Citations are emitted but don't correspond to retrieved passages | `verifyCitations` currently only checks whether citations are non-empty, not whether they are grounded |
 | Synonym miss in eval | Answer is correct but uses a different word than the expected keyword | Add an alias in `scoringUtils.ts` — only for transliterations and direct synonyms, not loose conceptual overlap |
 
+## Evaluation methodology
+
+The 30 questions are split into two sets to avoid tuning the system against the same questions used to measure it:
+
+- **Development set** — `eval/questions.dev.jsonl` (20 questions). Run freely with `pnpm eval`. Diagnose individual failures here (e.g. `pnpm tsx eval/diagnoseAnalysis.ts <id>`) and make changes in response. The six hard analysis questions under active work live here.
+- **Held-out test set** — `eval/questions.test.jsonl` (10 questions). Run with `pnpm eval:test` **only at milestones**, to get an honest performance number.
+
+**Freeze protocol:** never make a change in response to seeing an individual *test* question fail. If you need to diagnose a test question, move it into the dev set first — it is burned for measurement the moment you inspect it. Record each test score against the git commit it corresponds to, so you have a trustworthy progress trace.
+
+**Known limitations of this split:** the test set is only lightly held out. Every tuning decision so far was made against the aggregate score over all 30 questions, so even questions never inspected individually influenced the system's design. The test-set analysis questions are also comparatively easy (single expected keyword), so they don't strongly discriminate on hard synthesis behaviour. The proper next step, once tuning settles, is a **fresh batch of questions written afterwards** — probing the same capabilities with new vocabulary and angles — to serve as the real held-out test.
+
+A note on scoring aliases (`eval/scoringUtils.ts`): an alias is safe when it reflects a corpus fact or grammatical form you'd have written *before* seeing a failure (`sonya→sonia`, `poor→poverty`). It risks overfitting when added *reactively* because one answer happened to use that word. Keep aliases to transliterations and direct synonyms, never loose conceptual overlap.
+
 ## Project structure
 
 ```
@@ -178,8 +192,9 @@ src/
   rag/                    Chroma client and retriever
   cli/                    interactive chat REPL
 eval/
-  questions.jsonl         30-question test set (fact / quote / analysis)
-  runEval.ts              runs all questions through the graph
+  questions.dev.jsonl     20-question development set (fact / quote / analysis)
+  questions.test.jsonl    10-question held-out test set
+  runEval.ts              runs a question set through the graph (defaults to dev)
   scoreEval.ts            scores a run by keyword-pass and citation-pass
   scoringUtils.ts         case-insensitive keyword matching with alias map
   diffEvals.ts            side-by-side comparison of two runs
